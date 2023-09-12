@@ -5,7 +5,6 @@ import "../theme.css";
 import { useContext } from "react";
 import DataContext from "../context/Datacontext";
 
-
 const Header = () => {
   const { theme, toggleTheme } = useContext(DataContext);
 
@@ -16,14 +15,27 @@ const Header = () => {
           <Link to="/">c4a.dev</Link>
         </h1>
 
-        <button
+        {/* <button
           onClick={() => {
             toggleTheme(theme === "light" ? "dark" : "light");
           }}
           className="theme-btn"
         >
           {theme}
-        </button>
+        </button> */}
+
+        <i
+          onClick={() => {
+            toggleTheme(theme === "light" ? "dark" : "light");
+          }}
+          className="fa-solid fa-sun"
+        ></i>
+        <i
+          onClick={() => {
+            toggleTheme(theme === "light" ? "dark" : "light");
+          }}
+          className="fa-solid fa-moon"
+        ></i>
 
         <ul className="flex">
           <li className="main-list">

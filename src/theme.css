@@ -42,3 +42,23 @@
 
 }
 
+.light .fa-sun{
+ display: none;
+}
+.dark .fa-moon{
+  display: none;
+ }
+
+ .fa-solid{
+  font-size: 20px;
+ }
+
+ .fa-solid:hover{
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.1s;
+ }
+
+ .fa-sun{
+  color: orangeicon;
+ }
