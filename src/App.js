@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home";
 import HTML from "./pages/html";
-import Css from "./pages/css";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
 import Javascript from "./pages/javascript";
 import { useContext } from "react";
 import DataContext from "./context/Datacontext";
@@ -19,9 +20,14 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/css",
-    element: <Css />,
+    path: "/Signin",
+    element: <Signin />,
   },
+  {
+    path: "/Signup",
+    element: <Signup />,
+  },
+
   {
     path: "/javascript",
     element: <Javascript />,
