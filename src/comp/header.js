@@ -4,13 +4,17 @@ import "./Header.css";
 import "../theme.css";
 import { useContext } from "react";
 import DataContext from "../context/Datacontext";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase/config";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [user, loading, error] = useAuthState(auth);
   const { theme, toggleTheme } = useContext(DataContext);
 
   return (
     <div className="myheader">
+      {user && <h1>DONEEEEEEEEEEEEE</h1>}
       <header className="hide-when-mobile ali">
         <h1>
           <Link to="/">c4a.dev</Link>
@@ -39,18 +43,36 @@ const Header = () => {
         ></i>
 
         <ul className="flex">
-
-        <li className="main-list">
-            <NavLink className="main-link" to="/Signin">
-              Sign-in
-            </NavLink>
-          </li>
-
-          <li className="main-list">
-            <NavLink className="main-link" to="/Signup">
-            Sign-up
-            </NavLink>
-          </li>
+          {!user && (
+            <li className="main-list">
+              <NavLink className="main-link" to="/Signin">
+                Sign-in
+              </NavLink>
+            </li>
+          )}
+          {!user && (
+            <li className="main-list">
+              <NavLink className="main-link" to="/Signup">
+                Sign-up
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li
+              onClick={() => {
+                signOut(auth)
+                  .then(() => {
+                    // Sign-out successful.
+                  })
+                  .catch((error) => {
+                    // An error happened.
+                  });
+              }}
+              className="main-list"
+            >
+              <NavLink className="main-link">Sign-out</NavLink>
+            </li>
+          )}
 
           <li className="main-list">
             <NavLink className="main-link" to="/html">
@@ -69,8 +91,6 @@ const Header = () => {
             </ul>
           </li>
 
-        
-          
           <li className="main-list">
             <NavLink className="main-link" to="/javascript">
               JavaScript
