@@ -58,19 +58,21 @@ const Header = () => {
             </li>
           )}
           {user && (
-            <li
-              onClick={() => {
-                signOut(auth)
-                  .then(() => {
-                    // Sign-out successful.
-                  })
-                  .catch((error) => {
-                    // An error happened.
-                  });
-              }}
-              className="main-list"
-            >
-              <NavLink className="main-link">Sign-out</NavLink>
+            <li  className="main-list">
+              <NavLink
+                onClick={() => {
+                  signOut(auth)
+                    .then(() => {
+                      // Sign-out successful.
+                    })
+                    .catch((error) => {
+                      // An error happened.
+                    });
+                }}
+                className="main-link"
+              >
+                Sign-out
+              </NavLink>
             </li>
           )}
 
